@@ -8,10 +8,12 @@ import static org.testng.Assert.*;
 
 public class DropDownTests extends BaseTests {
     @Test
-    public void testDropdownOptions(){
+    public void testSelectOption(){
         DropDownPage dropDownPage = homePage.clickDropDown();
-        dropDownPage.selectFromDropDown("Option 1");
-        assertTrue(dropDownPage.getSelectedOptions().contains("Option 1"),
-                "Option is not selected!");
+        String option = "Option 1";
+        dropDownPage.selectFromDropDown(option);
+        assertEquals(dropDownPage.getSelectedOptions().size(),1, "Incorrect number of selections.");
+        assertTrue(dropDownPage.getSelectedOptions().contains(option),
+                "Option is not selected.");
     }
 }
