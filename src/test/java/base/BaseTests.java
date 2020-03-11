@@ -5,8 +5,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.*;
 import pages.HomePage;
 
 import java.util.List;
@@ -17,7 +16,7 @@ public class BaseTests {
     private WebDriver driver;
     protected HomePage homePage;
 
-    @BeforeClass
+    @BeforeMethod
     public void setUp(){
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         driver = new ChromeDriver();
@@ -26,7 +25,7 @@ public class BaseTests {
         homePage = new HomePage(driver);
 
     }
-    @AfterClass
+    @AfterMethod
     public void tearDown(){
         driver.quit();
     }
