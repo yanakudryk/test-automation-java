@@ -16,17 +16,23 @@ public class BaseTests {
     private WebDriver driver;
     protected HomePage homePage;
 
-    @BeforeMethod
+    @BeforeClass
     public void setUp(){
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         driver = new ChromeDriver();
-        driver.get("https://the-internet.herokuapp.com/");
-        driver.manage().window().maximize();
+        //driver.get("https://the-internet.herokuapp.com/");
+        goHome();
+        //driver.manage().window().maximize();
         homePage = new HomePage(driver);
 
     }
-    @AfterMethod
+    @AfterClass
     public void tearDown(){
         driver.quit();
+    }
+
+    @BeforeMethod
+    public void goHome(){
+        driver.get("https://the-internet.herokuapp.com/");
     }
 }

@@ -9,6 +9,10 @@ public class HomePage {
     private By dropDownLink = By.linkText("Dropdown");
     private By forgotPasswordLink = By.linkText("Forgot Password");
     private By hoversLink = By.linkText("Hovers");
+    private By keyPresses = By.linkText("Key Presses");
+    private By horizontalSlider = By.linkText("Horizontal Slider");
+    private By javaScriptAlerts = By.linkText("JavaScript Alerts");
+    private By fileUpload = By.linkText("File Upload");
 
     public HomePage(WebDriver driver){
         this.driver = driver;
@@ -32,5 +36,25 @@ public class HomePage {
     public HoversPage clickHovers(){
         driver.findElement(hoversLink).click();
         return new HoversPage(driver);
+    }
+
+    public KeyPressesPage clickKeyPresses(){
+        driver.findElement(keyPresses).click();
+        return new KeyPressesPage(driver);
+    }
+
+    public HorizontalSliderPage clickHorizontalSlider(){
+        driver.findElement(horizontalSlider).click();
+        return new HorizontalSliderPage(driver);
+    }
+
+    public JavaScriptAlertPage clickJavaScriptAlert(){
+        driver.findElement(javaScriptAlerts).click();
+        return new JavaScriptAlertPage(driver);
+    }
+
+    public FileUploadPage clickFileUpload(){
+        driver.findElement(fileUpload).click();
+        return new FileUploadPage(driver);
     }
 }
