@@ -13,6 +13,9 @@ public class HomePage {
     private By horizontalSlider = By.linkText("Horizontal Slider");
     private By javaScriptAlerts = By.linkText("JavaScript Alerts");
     private By fileUpload = By.linkText("File Upload");
+    private By contextMenu = By.linkText("Context Menu");
+    private By editor = By.linkText("WYSIWYG Editor");
+    private By frames = By.linkText("Frames");
 
     public HomePage(WebDriver driver){
         this.driver = driver;
@@ -56,5 +59,20 @@ public class HomePage {
     public FileUploadPage clickFileUpload(){
         driver.findElement(fileUpload).click();
         return new FileUploadPage(driver);
+    }
+
+    public ContextMenuPage clickContextMenu(){
+        driver.findElement(contextMenu).click();
+        return new ContextMenuPage(driver);
+    }
+
+    public IFramePage clickEditor(){
+        driver.findElement(editor).click();
+        return new IFramePage(driver);
+    }
+
+    public FramesPage clickFrames(){
+        driver.findElement(frames);
+        return new FramesPage(driver);
     }
 }
