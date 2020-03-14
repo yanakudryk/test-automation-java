@@ -16,4 +16,13 @@ public class DropDownTests extends BaseTests {
         assertTrue(dropDownPage.getSelectedOptions().contains(option),
                 "Option is not selected.");
     }
+    @Test
+    public void testMultipleSelection(){
+        DropDownPage dropDownPage = homePage.clickDropDown();
+        dropDownPage.setDropDownMultiple();
+        String [] options = {"Option 1", "Option 2"};
+        dropDownPage.selectFromDropDown(options);
+        assertEquals(dropDownPage.getSelectedOptions().size(), 2, "Incorrect number of selections.");
+        assertEquals(dropDownPage.getSelectedOptions().toArray(), options, "Selected options are incorrect.");
+    }
 }

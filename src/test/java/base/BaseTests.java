@@ -9,6 +9,7 @@ import org.testng.annotations.*;
 import pages.HomePage;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import static java.lang.Thread.sleep;
 
@@ -21,6 +22,7 @@ public class BaseTests {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
         driver = new ChromeDriver();
         //driver.get("https://the-internet.herokuapp.com/");
+        //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         goHome();
         //driver.manage().window().maximize();
         homePage = new HomePage(driver);
