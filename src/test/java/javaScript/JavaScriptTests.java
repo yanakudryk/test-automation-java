@@ -23,6 +23,7 @@ public class JavaScriptTests extends BaseTests {
     public void testInfiniteScroll(){
         InfiniteScrollPage infiniteScrollPage = homePage.clickInfiniteScroll();
         infiniteScrollPage.scrollToParagraph(5);
+        String test = "Text";
     }
 
 }
