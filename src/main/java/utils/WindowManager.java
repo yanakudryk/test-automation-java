@@ -49,4 +49,11 @@ public class WindowManager {
             }
         }
     }
+
+    public void switchToNewTab(){
+        Set<String> windows = driver.getWindowHandles();
+        for (String window: windows) {
+            driver.switchTo().window(window);
+        }
+    }
 }
