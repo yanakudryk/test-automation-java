@@ -1,8 +1,10 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class DynamicLoadingPage {
     private WebDriver driver;
@@ -19,6 +21,11 @@ public class DynamicLoadingPage {
 
     public ExampleSecondPage clickExampleSecond(){
         driver.findElement(exampleSecond).click();
+        return new ExampleSecondPage(driver);
+    }
+
+    public ExampleSecondPage clickExampleSecondToOpenInNewWindow(){
+        driver.findElement(exampleSecond).sendKeys(Keys.CONTROL, Keys.RETURN);
         return new ExampleSecondPage(driver);
     }
 

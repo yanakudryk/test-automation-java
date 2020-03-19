@@ -29,4 +29,11 @@ public class ExampleSecondPage {
     public String getLoadedText(){
         return driver.findElement(finish).getText();
     }
+
+    public Boolean isStartButtonDisplayed(){
+        if(driver.findElement(startButton).isDisplayed()){
+            return true;
+        }
+        else return false;
+    }
 }
