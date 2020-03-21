@@ -11,22 +11,22 @@ public class EventReporter implements WebDriverEventListener {
     public static final Logger log = Logger.getLogger(EventReporter.class);
     @Override
     public void beforeAlertAccept(WebDriver webDriver) {
-
+        log.info("Accepting alert...");
     }
 
     @Override
     public void afterAlertAccept(WebDriver webDriver) {
-
+        log.info("Alert was accepted.");
     }
 
     @Override
     public void afterAlertDismiss(WebDriver webDriver) {
-
+        log.info("Alert was dismissed.");
     }
 
     @Override
     public void beforeAlertDismiss(WebDriver webDriver) {
-
+        log.info("Dismissing alert " +  webDriver.switchTo().alert().getText());
     }
 
     @Override
@@ -71,22 +71,23 @@ public class EventReporter implements WebDriverEventListener {
 
     @Override
     public void beforeFindBy(By by, WebElement webElement, WebDriver webDriver) {
-
+        log.info("Searching for element located by" + by.toString());
     }
 
     @Override
     public void afterFindBy(By by, WebElement webElement, WebDriver webDriver) {
-
+        log.info("Element " + by.toString() + " was successfully found." );
     }
 
     @Override
     public void beforeClickOn(WebElement webElement, WebDriver webDriver) {
-        log.info("Clicking on " + webElement.getText());
+        log.info("Clicking on ...");
 
     }
 
     @Override
     public void afterClickOn(WebElement webElement, WebDriver webDriver) {
+        log.info("Clicked on.");
 
     }
 

@@ -10,7 +10,7 @@ import static org.testng.Assert.assertEquals;
 public class FileUploadTests extends BaseTests {
     @Test
     public void testFileUpload(){
-        String absolutePathToFile = "C:\\Users\\Яна\\IdeaProjects\\testautomatiom\\resources\\PDF1.pdf";
+        String absolutePathToFile = "C:\\Users\\Yana\\IdeaProjects\\testautomatiom\\resources\\PDF1.pdf";
         FileUploadPage fileUploadPage = homePage.clickFileUpload();
         fileUploadPage.uploadFile(absolutePathToFile);
         FileUploadedPage fileUploadedPage = fileUploadPage.clickFileUpload();

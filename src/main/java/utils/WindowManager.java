@@ -27,6 +27,7 @@ public class WindowManager {
     public void goTo(String url){
         navigate.to(url);
     }
+
     public void switchToTab(String tabName){
         Set<String> windows = driver.getWindowHandles();
         System.out.println("Tabs:" + windows.size());
@@ -43,9 +44,8 @@ public class WindowManager {
     public void switchToTab(URL url){
         Set<String> windows = driver.getWindowHandles();
         for (String window: windows) {
-            driver.switchTo().window(window);
-            if(url.equals(driver.getCurrentUrl())){
-                break;
+            if(!url.toString().equals(driver.getCurrentUrl())){
+                driver.switchTo().window(window);
             }
         }
     }

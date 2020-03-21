@@ -8,6 +8,7 @@ import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import pages.HomePage;
+import utils.CookieManager;
 import utils.EventReporter;
 import utils.WindowManager;
 
@@ -57,29 +58,16 @@ public class BaseTests {
     public WindowManager getWindowManager(){
         return new WindowManager(driver);
     }
+    public CookieManager getCookieManager(){
+        return new CookieManager(driver);
+    }
 
     private ChromeOptions getChromeOptions(){
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("disable-infobars");
+        //options.addArguments("disable-infobars");
         //options.setHeadless(true);
         return options;
     }
-    private void setCookie(){
-        Cookie cookie = new Cookie.Builder("tau", "123")
-                .domain("the-internet.herokuapp.com")
-                .build();
-        driver.manage().addCookie(cookie);
-    }
-    public void deleteCookie(String name){
-        driver.manage().deleteCookieNamed(name);
-    }
 
-    public Set<Cookie> getCookies(){
-        return driver.manage().getCookies();
-    }
-
-    public Cookie getCookie(String name){
-        return driver.manage().getCookieNamed(name);
-    }
 
 }
