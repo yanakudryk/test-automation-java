@@ -3,6 +3,7 @@ package base;
 import com.google.common.io.Files;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
@@ -12,6 +13,7 @@ import utils.WindowManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Set;
 
 public class BaseTests {
     private EventFiringWebDriver driver;
@@ -20,14 +22,12 @@ public class BaseTests {
     @BeforeClass
     public void setUp(){
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
-        driver = new EventFiringWebDriver(new ChromeDriver());
+        driver = new EventFiringWebDriver(new ChromeDriver(getChromeOptions()));
         driver.register(new EventReporter());
-        //driver.get("https://the-internet.herokuapp.com/");
         //driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         goHome();
         //driver.manage().window().maximize();
-        homePage = new HomePage(driver);
-
+        //setCookie();
     }
 
     @AfterClass
@@ -38,6 +38,7 @@ public class BaseTests {
     @BeforeMethod
     public void goHome(){
         driver.get("https://the-internet.herokuapp.com/");
+        homePage = new HomePage(driver);
     }
 
     @AfterMethod
@@ -56,4 +57,29 @@ public class BaseTests {
     public WindowManager getWindowManager(){
         return new WindowManager(driver);
     }
+
+    private ChromeOptions getChromeOptions(){
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("disable-infobars");
+        //options.setHeadless(true);
+        return options;
+    }
+    private void setCookie(){
+        Cookie cookie = new Cookie.Builder("tau", "123")
+                .domain("the-internet.herokuapp.com")
+                .build();
+        driver.manage().addCookie(cookie);
+    }
+    public void deleteCookie(String name){
+        driver.manage().deleteCookieNamed(name);
+    }
+
+    public Set<Cookie> getCookies(){
+        return driver.manage().getCookies();
+    }
+
+    public Cookie getCookie(String name){
+        return driver.manage().getCookieNamed(name);
+    }
+
 }

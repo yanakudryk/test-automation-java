@@ -8,7 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 
 public class EventReporter implements WebDriverEventListener {
-    private static final Logger log = Logger.getLogger(EventReporter.class);
+    public static final Logger log = Logger.getLogger(EventReporter.class);
     @Override
     public void beforeAlertAccept(WebDriver webDriver) {
 
